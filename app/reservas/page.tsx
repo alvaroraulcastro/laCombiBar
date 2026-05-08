@@ -27,21 +27,36 @@ export default function ReservasPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulación de envío - En producción, esto se conectaría a una API
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitStatus('success')
-      setFormData({
-        nombre: '',
-        email: '',
-        telefono: '',
-        fecha: '',
-        hora: '',
-        personas: '2',
-        comentarios: '',
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch('/api/reservas', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
-    }, 1500)
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({
+          nombre: '',
+          email: '',
+          telefono: '',
+          fecha: '',
+          hora: '',
+          personas: '2',
+          comentarios: '',
+        })
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch {
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -61,6 +76,13 @@ export default function ReservasPage() {
           </div>
         )}
 
+        {submitStatus === 'error' && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+            <strong className="font-bold">Error</strong>
+            <span className="block sm:inline"> Hubo un problema al enviar la reserva. Por favor intenta nuevamente o contáctanos por WhatsApp.</span>
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-md p-6 md:p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Nombre */}
@@ -75,7 +97,7 @@ export default function ReservasPage() {
                 required
                 value={formData.nombre}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-combi-orange focus:border-transparent outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-combi-green focus:border-transparent outline-none"
                 placeholder="Tu nombre"
               />
             </div>
@@ -92,7 +114,7 @@ export default function ReservasPage() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-combi-orange focus:border-transparent outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-combi-green focus:border-transparent outline-none"
                 placeholder="tu@email.com"
               />
             </div>
@@ -109,7 +131,7 @@ export default function ReservasPage() {
                 required
                 value={formData.telefono}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-combi-orange focus:border-transparent outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-combi-green focus:border-transparent outline-none"
                 placeholder="+123 456 7890"
               />
             </div>
@@ -127,7 +149,7 @@ export default function ReservasPage() {
                 value={formData.fecha}
                 onChange={handleChange}
                 min={new Date().toISOString().split('T')[0]}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-combi-orange focus:border-transparent outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-combi-green focus:border-transparent outline-none"
               />
             </div>
 
@@ -143,7 +165,7 @@ export default function ReservasPage() {
                 required
                 value={formData.hora}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-combi-orange focus:border-transparent outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-combi-green focus:border-transparent outline-none"
               />
             </div>
 
@@ -158,7 +180,7 @@ export default function ReservasPage() {
                 required
                 value={formData.personas}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-combi-orange focus:border-transparent outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-combi-green focus:border-transparent outline-none"
               >
                 {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
                   <option key={num} value={num}>
@@ -180,7 +202,7 @@ export default function ReservasPage() {
                 rows={4}
                 value={formData.comentarios}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-combi-orange focus:border-transparent outline-none resize-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-combi-green focus:border-transparent outline-none resize-none"
                 placeholder="¿Alguna solicitud especial? (alergias, ocasión especial, etc.)"
               />
             </div>
@@ -189,7 +211,7 @@ export default function ReservasPage() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full mt-6 bg-combi-orange text-white py-3 px-6 rounded-lg font-semibold hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full mt-6 bg-combi-green text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? 'Enviando...' : 'Confirmar Reserva'}
           </button>

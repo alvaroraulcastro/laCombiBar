@@ -8,10 +8,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'combi-orange': '#FF6B35',
-        'combi-yellow': '#F7C548',
-        'combi-dark': '#1A1A2E',
-        'combi-cream': '#FFF5E6',
+        'combi-dark': '#000000',
+        'combi-green': '#5D8A66',
+        'combi-cream': '#FFFFFF',
       },
     },
   },
