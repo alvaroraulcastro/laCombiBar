@@ -55,25 +55,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const googleScriptUrl = process.env.GOOGLE_SCRIPT_URL
-    if (googleScriptUrl) {
-      try {
-        const response = await fetch(googleScriptUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        })
-
-        if (!response.ok) {
-          console.error('Google Sheets response was not ok')
-        }
-      } catch (googleError) {
-        console.error('Error enviando a Google Sheets:', googleError)
-      }
-    }
-
     const whatsappApiUrl = process.env.WHATSAPP_API_URL
     const whatsappPhone = process.env.WHATSAPP_PHONE
     const whatsappApiKey = process.env.WHATSAPP_API_KEY
