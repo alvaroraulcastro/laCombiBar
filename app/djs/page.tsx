@@ -17,6 +17,13 @@ const djs: DJ[] = [
     bio: 'DJ y productor musical. Ritmos que hacen vibrar la noche.',
     image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80',
   },
+  {
+    id: 2,
+    name: 'dj_mel1odaz_309',
+    instagram: 'https://www.instagram.com/dj_mel1odaz_309',
+    bio: 'Mezclas únicas que animan cualquier noche en La Combi.',
+    image: 'https://images.unsplash.com/photo-1571266028243-e4733b0f0bb0?w=800&q=80',
+  },
 ]
 
 export default function DJsPage() {

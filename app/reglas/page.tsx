@@ -53,8 +53,8 @@ export default function ReglasPage() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-combi-dark mb-1">Código de Vestimenta</h3>
-                  <p className="text-gray-600 text-sm">Estilo casual/smart. No se permite ropa de playa o zapatillas.</p>
+                  <h3 className="font-semibold text-combi-dark mb-1">Edad Mínima</h3>
+                  <p className="text-gray-600 text-sm">Para consumir alcohol debes ser mayor de 18 años.</p>
                 </div>
               </div>
 
@@ -65,8 +65,8 @@ export default function ReglasPage() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-combi-dark mb-1">Edad Mínima</h3>
-                  <p className="text-gray-600 text-sm">Para consumir alcohol debes ser mayor de 18 años.</p>
+                  <h3 className="font-semibold text-combi-dark mb-1">Respeto y Convivencia</h3>
+                  <p className="text-gray-600 text-sm">Trata con respeto a nuestros colaboradores y otros clientes. No se toleran comportamentos agresivos.</p>
                 </div>
               </div>
 
@@ -77,8 +77,8 @@ export default function ReglasPage() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-combi-dark mb-1">Consumo Mínimo</h3>
-                  <p className="text-gray-600 text-sm">Hay un consumo mínimo de $8.000 por persona después de las 23:00 hrs.</p>
+                  <h3 className="font-semibold text-combi-dark mb-1">Ambiente Seguro</h3>
+                  <p className="text-gray-600 text-sm">No se permiten conductas discriminatorias, acoso ni comentarios ofensivos hacia otros clientes o Staff.</p>
                 </div>
               </div>
 
@@ -89,8 +89,8 @@ export default function ReglasPage() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-combi-dark mb-1">Respeto</h3>
-                  <p className="text-gray-600 text-sm">Trata con respeto a nuestros colaboradores y otros clientes.</p>
+                  <h3 className="font-semibold text-combi-dark mb-1">Sustancias Prohibidas</h3>
+                  <p className="text-gray-600 text-sm">No se permite el consumo ni tenencia de sustancias ilegales dentro del establecimiento.</p>
                 </div>
               </div>
             </div>
