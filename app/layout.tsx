@@ -6,10 +6,88 @@ import Footer from '@/components/layout/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
+const baseUrl = 'https://la-combi-bar.vercel.app'
+
 export const metadata: Metadata = {
-  title: 'La Combi Bar - Reservas y Carta',
-  description: 'La Combi Bar - Disfruta de los mejores cócteles, comida y ambiente. Reserva tu mesa online y explora nuestra carta.',
-  keywords: ['bar', 'cócteles', 'comida', 'reservas', 'La Combi', 'restaurante'],
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: 'La Combi Bar - Bar y Restaurante',
+    template: '%s | La Combi Bar',
+  },
+  description: 'La Combi Bar - Disfruta de los mejores cócteles artesanales, comida casera y ambiente único. Reserva tu mesa online o visítanos.',
+  keywords: ['bar', 'restaurante', 'cócteles', 'comida', 'reservas', 'La Combi', ' ambiance', 'tragos', 'bares'],
+  authors: [{ name: 'La Combi Bar' }],
+  creator: 'La Combi Bar',
+  openGraph: {
+    type: 'website',
+    locale: 'es_CL',
+    url: baseUrl,
+    siteName: 'La Combi Bar',
+    title: 'La Combi Bar - Bar y Restaurante',
+    description: 'Disfruta de los mejores cócteles artesanales, comida casera y ambiente único. Reserva tu mesa online.',
+    images: [
+      {
+        url: '/images/laCombiBar-logo.jpeg',
+        width: 800,
+        height: 600,
+        alt: 'La Combi Bar Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'La Combi Bar - Bar y Restaurante',
+    description: 'Disfruta de los mejores cócteles artesanales, comida casera y ambiente único.',
+    images: ['/images/laCombiBar-logo.jpeg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code',
+  },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: 'La Combi Bar',
+  image: '/images/laCombiBar-logo.jpeg',
+  url: baseUrl,
+  telephone: '+56973014958',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'CL',
+    addressRegion: 'Chile',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '18:00',
+      closes: '03:00',
+    },
+  ],
+  servesCuisine: ['Bar', 'Restaurant', 'Cocktails'],
+  priceRange: '$$',
+  hasMenu: {
+    '@type': 'Menu',
+    name: 'Carta',
+    url: `${baseUrl}/menu`,
+  },
+  reservationAction: {
+    '@type': 'ReserveAction',
+    name: 'Reservar Mesa',
+    url: `${baseUrl}/reservas`,
+  },
 }
 
 export default function RootLayout({
@@ -19,7 +97,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={inter.className}>
+      <body className={`${inter.className} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <div className="flex flex-col min-h-screen">
           <Header />
           <main className="flex-grow">
