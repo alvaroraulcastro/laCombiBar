@@ -137,7 +137,7 @@ export default function Home() {
                 </p>
               </div>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=Eleuterio+Ramirez+764+Osorno"
+                href="https://www.google.com/maps?q=-40.57302,-73.13758"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-combi-green text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
