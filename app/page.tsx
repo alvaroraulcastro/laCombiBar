@@ -34,7 +34,11 @@ export default function Home() {
               La Combi Bar
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-4">
-              Cocktails clásicos, buena comida y la mejor música en un solo lugar.
+              Coctelería, cocina y noches marcadas por la música en vivo en el corazón de Osorno.
+            </p>
+            <p className="text-gray-400 mb-4">
+              En La Combi Bar cada jornada se vive entre bandas, DJs invitados y un ambiente cercano pensado
+              para compartir, descubrir sonidos nuevos y quedarse hasta el último brindis.
             </p>
             <p className="text-gray-400 mb-8">
               📍 Eleuterio Ramirez 764, Osorno | Lun-Dom 18:00 - 03:00
@@ -98,9 +102,10 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-black">Ambiente Inigualable</h3>
+              <h3 className="text-xl font-semibold mb-2 text-black">Música en Vivo</h3>
               <p className="text-gray-600">
-                Música en vivo, DJs invitados y un ambiente que te hará querer volver cada fin de semana.
+                El sello de La Combi está en sus noches de música en vivo, DJs invitados y una energía que
+                convierte cada fecha en una experiencia distinta.
               </p>
               <Link href="/djs" className="inline-block mt-4 text-combi-green hover:underline">
                 Ver DJs →
@@ -119,7 +124,8 @@ export default function Home() {
                 Encuéntranos
               </h2>
               <p className="text-gray-600 mb-4">
-                Estamos en el corazón de Osorno, listos para recibirte con los mejores tragos y la mejor vibra.
+                Somos un punto de encuentro para quienes buscan buenos tragos, cocina para compartir y una
+                programación donde la música en vivo es protagonista.
               </p>
               <div className="space-y-3 mb-6">
                 <p className="flex items-center gap-2 text-gray-700">
@@ -163,7 +169,8 @@ export default function Home() {
             ¿Listo para la mejor noche?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Reserva tu mesa ahora y garantiza tu lugar. Viernes y sábados se llenan rápido.
+            Reserva tu mesa y vive una noche de coctelería, cocina y música en vivo. Viernes y sábados se
+            llenan rápido.
           </p>
           <Link
             href="/reservas"

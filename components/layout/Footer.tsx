@@ -15,7 +15,7 @@ export default function Footer() {
               className="h-16 w-auto mb-4"
             />
             <p className="text-gray-300">
-              El mejor lugar para disfrutar de cócteles artesanales y deliciosa comida en un ambiente único.
+              El mejor lugar para disfrutar de cócteles y deliciosa comida en un ambiente único.
             </p>
           </div>
           

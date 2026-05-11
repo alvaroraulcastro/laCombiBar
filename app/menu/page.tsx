@@ -235,13 +235,6 @@ const menuGroups: MenuGroup[] = [
         ],
         note: 'Variedades visibles: Merlot, Cabernet Sauvignon, Carmenere, Sauvignon Blanc y Chardonnay.',
       },
-      {
-        title: 'Promocion destacada',
-        items: [
-          { name: '2 schop Trilogia del Sur + Chorrillanita a lo pobre', price: '$10.000' },
-        ],
-        note: 'Tambien se indica: cocina habilitada hasta las 00:30 am.',
-      },
     ],
   },
 ]
@@ -291,14 +284,6 @@ export default function MenuPage() {
               Marca de cerveza trabajada por el bar. En la carta aparecen pale ale, ambar, stout y calafate.
             </p>
           </div>
-          <div className="rounded-2xl bg-combi-green p-6 text-white shadow-lg">
-            <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-white/80">
-              Promo visible
-            </p>
-            <h2 className="mb-2 text-2xl font-bold">$10.000</h2>
-            <p>2 schop Trilogia del Sur + Chorrillanita a lo pobre.</p>
-            <p className="mt-2 text-sm text-white/80">Cocina habilitada hasta las 00:30 am.</p>
-          </div>
         </section>
 
         <div className="space-y-10">
@@ -317,6 +302,45 @@ export default function MenuPage() {
             </section>
           ))}
         </div>
+
+        <section className="mt-14 rounded-3xl bg-black px-6 py-8 text-white shadow-xl md:px-8">
+          <div className="mx-auto max-w-4xl">
+            <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-combi-green">
+              Cerveza destacada
+            </p>
+            <h2 className="mb-4 text-3xl font-bold">Trilogía del Sur</h2>
+            <div className="space-y-4 text-gray-300">
+              <p>
+                En La Combi Bar trabajamos con <strong className="text-white">Cervezas Trilogía del Sur</strong>,
+                una propuesta artesanal que acompaña muy bien el carácter del local: sabores definidos, identidad
+                propia y cervezas pensadas para disfrutar con buena cocina y música en vivo.
+              </p>
+              <p>
+                Dentro de la carta destacamos sus variedades <strong className="text-white">Pale Ale</strong>,
+                <strong className="text-white"> Ámbar</strong>, <strong className="text-white">Stout</strong> y
+                <strong className="text-white"> Calafate</strong>, ideales para quienes buscan una cerveza con
+                personalidad y una experiencia más local y auténtica.
+              </p>
+              <p>
+                Si quieres conocer más sobre sus creadores y novedades, puedes seguirlos en Instagram.
+              </p>
+            </div>
+
+            <div className="mt-6">
+              <a
+                href="https://www.instagram.com/trilogiadelsur/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-combi-green px-5 py-3 font-semibold text-white hover:opacity-90 transition-opacity"
+              >
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+                Seguir a @trilogiadelsur
+              </a>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   )

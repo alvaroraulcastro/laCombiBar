@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: 'La Combi Bar - Bar y Restaurante',
     template: '%s | La Combi Bar',
   },
-  description: 'La Combi Bar - Disfruta de los mejores cócteles artesanales, comida casera y ambiente único. Reserva tu mesa online o visítanos.',
+  description: 'La Combi Bar - Coctelería, cocina y música en vivo en Osorno. Reserva tu mesa online y vive noches con bandas y DJs invitados.',
   keywords: ['bar', 'restaurante', 'cócteles', 'comida', 'reservas', 'La Combi', ' ambiance', 'tragos', 'bares'],
   authors: [{ name: 'La Combi Bar' }],
   creator: 'La Combi Bar',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     url: baseUrl,
     siteName: 'La Combi Bar',
     title: 'La Combi Bar - Bar y Restaurante',
-    description: 'Disfruta de los mejores cócteles artesanales, comida casera y ambiente único. Reserva tu mesa online.',
+    description: 'Coctelería, cocina y música en vivo en Osorno. Reserva tu mesa online y vive noches con bandas y DJs invitados.',
     images: [
       {
         url: '/images/laCombiBar-logo.jpeg',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'La Combi Bar - Bar y Restaurante',
-    description: 'Disfruta de los mejores cócteles artesanales, comida casera y ambiente único.',
+    description: 'Coctelería, cocina y música en vivo en Osorno.',
     images: ['/images/laCombiBar-logo.jpeg'],
   },
   robots: {
