@@ -14,13 +14,15 @@ const markerIcon = new L.Icon({
   shadowSize: [41, 41],
 })
 
+const BAR_LAT_LNG: L.LatLngTuple = [-40.573269, -73.133258]
+
 export default function Map() {
   useEffect(() => {
     if (typeof window === 'undefined') return
 
     const map = L.map('map', {
-      center: [-40.5740, -73.1232],
-      zoom: 15,
+      center: BAR_LAT_LNG,
+      zoom: 17,
       scrollWheelZoom: false,
     })
 
@@ -28,7 +30,7 @@ export default function Map() {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(map)
 
-    L.marker([-40.5740, -73.1232], { icon: markerIcon })
+    L.marker(BAR_LAT_LNG, { icon: markerIcon })
       .addTo(map)
       .bindPopup('<strong>La Combi Bar</strong><br>Eleuterio Ramirez 764, Osorno')
       .openPopup()

@@ -34,7 +34,7 @@ export default function Home() {
               La Combi Bar
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-4">
-              Cocktails artesanales, buena comida y la mejor música en un solo lugar.
+              Cocktails clásicos, buena comida y la mejor música en un solo lugar.
             </p>
             <p className="text-gray-400 mb-8">
               📍 Eleuterio Ramirez 764, Osorno | Lun-Dom 18:00 - 03:00
