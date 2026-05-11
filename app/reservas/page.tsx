@@ -72,7 +72,7 @@ export default function ReservasPage() {
         {submitStatus === 'success' && (
           <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
             <strong className="font-bold">¡Reserva enviada!</strong>
-            <span className="block sm:inline"> Te contactaremos pronto para confirmar tu reserva.</span>
+            <span className="block sm:inline"> El administrador del bar se comunicará con usted para confirmar la reserva.</span>
           </div>
         )}
 

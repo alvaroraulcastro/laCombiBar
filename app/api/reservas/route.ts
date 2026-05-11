@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import sgMail from '@sendgrid/mail'
 
 interface ReservationData {
   nombre: string
@@ -18,6 +19,66 @@ function validateEmail(email: string): boolean {
 function validatePhone(phone: string): boolean {
   const phoneRegex = /^\+?[0-9\s\-]{8,15}$/
   return phoneRegex.test(phone)
+}
+
+function buildEmailMessage(data: ReservationData, isHtml: boolean): string {
+  const separator = isHtml ? '<br>' : '\n'
+  const strong = (text: string) => isHtml ? `<strong>${text}</strong>` : text
+
+  return `🍸 Nueva Reserva - La Combi Bar${separator}${separator}` +
+    `${strong('👤 Nombre:')} ${data.nombre}${separator}` +
+    `${strong('📧 Email:')} ${data.email}${separator}` +
+    `${strong('📱 Teléfono:')} ${data.telefono}${separator}` +
+    `${strong('📅 Fecha:')} ${data.fecha}${separator}` +
+    `${strong('🕐 Hora:')} ${data.hora}${separator}` +
+    `${strong('👥 Personas:')} ${data.personas}` +
+    (data.comentarios ? `${separator}${separator}${strong('💬 Notas:')} ${data.comentarios}` : '')
+}
+
+async function sendWhatsApp(data: ReservationData): Promise<void> {
+  const whatsappApiUrl = process.env.WHATSAPP_API_URL
+  const whatsappPhone = process.env.WHATSAPP_PHONE
+  const whatsappApiKey = process.env.WHATSAPP_API_KEY
+
+  if (!whatsappApiUrl || !whatsappPhone || !whatsappApiKey) {
+    throw new Error('WhatsApp not configured')
+  }
+
+  const message = `🍸 *Nueva Reserva - La Combi Bar*%0A%0A` +
+    `👤 *Nombre:* ${encodeURIComponent(data.nombre)}%0A` +
+    `📧 *Email:* ${encodeURIComponent(data.email)}%0A` +
+    `📱 *Teléfono:* ${encodeURIComponent(data.telefono)}%0A` +
+    `📅 *Fecha:* ${encodeURIComponent(data.fecha)}%0A` +
+    `🕐 *Hora:* ${encodeURIComponent(data.hora)}%0A` +
+    `👥 *Personas:* ${encodeURIComponent(data.personas)}` +
+    (data.comentarios ? `%0A%0A💬 *Notas:* ${encodeURIComponent(data.comentarios)}` : '')
+
+  const whatsappUrl = `${whatsappApiUrl}?phone=${whatsappPhone}&text=${message}&apikey=${whatsappApiKey}`
+
+  await fetch(whatsappUrl)
+}
+
+async function sendEmail(data: ReservationData): Promise<void> {
+  const apiKey = process.env.SENDGRID_API_KEY
+  const destinatario = process.env.SENDGRID_DESTINATARIO
+  const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'reservas@lacombibar.com'
+  const fromName = process.env.SENDGRID_FROM_NAME || 'La Combi Bar'
+
+  if (!apiKey || !destinatario) {
+    throw new Error('SendGrid not configured')
+  }
+
+  sgMail.setApiKey(apiKey)
+
+  const msg = {
+    to: destinatario,
+    from: `${fromName} <${fromEmail}>`,
+    subject: `🍸 Nueva Reserva - ${data.nombre} - ${data.fecha} ${data.hora}`,
+    text: buildEmailMessage(data, false),
+    html: buildEmailMessage(data, true),
+  }
+
+  await sgMail.send(msg)
 }
 
 export async function POST(request: NextRequest) {
@@ -55,32 +116,31 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const whatsappApiUrl = process.env.WHATSAPP_API_URL
-    const whatsappPhone = process.env.WHATSAPP_PHONE
-    const whatsappApiKey = process.env.WHATSAPP_API_KEY
+    const [whatsappResult, emailResult] = await Promise.allSettled([
+      sendWhatsApp(data).catch(err => { throw err }),
+      sendEmail(data).catch(err => { throw err })
+    ])
 
-    if (whatsappApiUrl && whatsappPhone && whatsappApiKey) {
-      const message = `🍸 *Nueva Reserva - La Combi Bar*%0A%0A` +
-        `👤 *Nombre:* ${encodeURIComponent(data.nombre)}%0A` +
-        `📧 *Email:* ${encodeURIComponent(data.email)}%0A` +
-        `📱 *Teléfono:* ${encodeURIComponent(data.telefono)}%0A` +
-        `📅 *Fecha:* ${encodeURIComponent(data.fecha)}%0A` +
-        `🕐 *Hora:* ${encodeURIComponent(data.hora)}%0A` +
-        `👥 *Personas:* ${encodeURIComponent(data.personas)}` +
-        (data.comentarios ? `%0A%0A💬 *Notas:* ${encodeURIComponent(data.comentarios)}` : '')
+    const whatsappSuccess = whatsappResult.status === 'fulfilled'
+    const emailSuccess = emailResult.status === 'fulfilled'
 
-      const whatsappUrl = `${whatsappApiUrl}?phone=${whatsappPhone}&text=${message}&apikey=${whatsappApiKey}`
+    if (whatsappResult.status === 'rejected') {
+      console.error('WhatsApp error:', whatsappResult.reason)
+    }
+    if (emailResult.status === 'rejected') {
+      console.error('Email error:', emailResult.reason)
+    }
 
-      try {
-        await fetch(whatsappUrl)
-      } catch (whatsappError) {
-        console.error('Error enviando WhatsApp:', whatsappError)
-      }
+    if (!whatsappSuccess && !emailSuccess) {
+      return NextResponse.json(
+        { error: 'Error al enviar la reserva. Por favor intenta nuevamente.' },
+        { status: 500 }
+      )
     }
 
     return NextResponse.json({
       success: true,
-      message: '¡Reserva enviada correctamente! Te contactaremos pronto para confirmar.'
+      message: '¡Reserva enviada correctamente! El administrador del bar se comunicará con usted para confirmar la reserva.'
     })
 
   } catch (error) {
