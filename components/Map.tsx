@@ -14,7 +14,7 @@ const markerIcon = new L.Icon({
   shadowSize: [41, 41],
 })
 
-const BAR_LAT_LNG: L.LatLngTuple = [-40.573269, -73.133258]
+const BAR_LAT_LNG: L.LatLngTuple = [-40.57302, -73.13758]
 
 export default function Map() {
   useEffect(() => {
