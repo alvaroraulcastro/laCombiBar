@@ -235,13 +235,6 @@ const menuGroups: MenuGroup[] = [
         ],
         note: 'Variedades visibles: Merlot, Cabernet Sauvignon, Carmenere, Sauvignon Blanc y Chardonnay.',
       },
-      {
-        title: 'Promocion destacada',
-        items: [
-          { name: '2 schop Trilogia del Sur + Chorrillanita a lo pobre', price: '$10.000' },
-        ],
-        note: 'Tambien se indica: cocina habilitada hasta las 00:30 am.',
-      },
     ],
   },
 ]
@@ -290,14 +283,6 @@ export default function MenuPage() {
             <p className="text-gray-300">
               Marca de cerveza trabajada por el bar. En la carta aparecen pale ale, ambar, stout y calafate.
             </p>
-          </div>
-          <div className="rounded-2xl bg-combi-green p-6 text-white shadow-lg">
-            <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-white/80">
-              Promo visible
-            </p>
-            <h2 className="mb-2 text-2xl font-bold">$10.000</h2>
-            <p>2 schop Trilogia del Sur + Chorrillanita a lo pobre.</p>
-            <p className="mt-2 text-sm text-white/80">Cocina habilitada hasta las 00:30 am.</p>
           </div>
         </section>
 
