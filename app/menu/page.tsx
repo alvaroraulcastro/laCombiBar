@@ -275,16 +275,10 @@ export default function MenuPage() {
     <div className="bg-gray-50">
       <div className="container mx-auto px-4 py-10 md:py-14">
         <div className="mx-auto mb-10 max-w-3xl text-center">
-          <p className="mb-3 inline-flex rounded-full bg-combi-green/10 px-4 py-1 text-sm font-semibold text-combi-green">
-            Carta actualizada desde imagenes del local
-          </p>
+       
           <h1 className="mb-4 text-4xl font-bold text-combi-dark md:text-5xl">
             Nuestra Carta
           </h1>
-          <p className="text-gray-600">
-            Actualizamos los precios y productos segun la carta visible en las imagenes compartidas del bar,
-            incluyendo la cerveza artesanal de la casa: Trilogia del Sur.
-          </p>
         </div>
 
         <section className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
