@@ -85,7 +85,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold mb-2 text-black">Cocteles Originales</h3>
               <p className="text-gray-600">
-                Más de 28 cócteles artesanales. Cada uno preparado con ingredientes de primera calidad.
+                Más de 28 cócteles. Cada uno preparado con ingredientes de primera calidad.
               </p>
               <Link href="/menu" className="inline-block mt-4 text-combi-green hover:underline">
                 Ver carta →
