@@ -20,6 +20,12 @@ const djs: DJ[] = [
     instagram: 'https://www.instagram.com/dj_mel1odaz_309',
     bio: 'Mezclas únicas que animan cualquier noche en La Combi.',
   },
+  {
+    id: 3,
+    name: 'DJ Freak',
+    instagram: 'https://www.instagram.com/memo.djfreak',
+    bio: 'Energía y ritmo para hacer vibrar la noche.',
+  },
 ]
 
 export default function DJsPage() {
